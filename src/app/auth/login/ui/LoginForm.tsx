@@ -25,17 +25,21 @@ export const LoginForm = () => {
 
             <label htmlFor="email">Correo electrónico</label>
             <input
-                className="px-5 py-2 border bg-gray-200 rounded mb-5"
+                id="email"
+                className="px-5 py-2 border bg-gray-200 text-gray-900 placeholder:text-gray-500 rounded mb-5"
                 type="email"
                 name='email'
+                autoComplete="email"
             />
 
 
-            <label htmlFor="email">Contraseña</label>
+            <label htmlFor="password">Contraseña</label>
             <input
-                className="px-5 py-2 border bg-gray-200 rounded mb-5"
+                id="password"
+                className="px-5 py-2 border bg-gray-200 text-gray-900 placeholder:text-gray-500 rounded mb-5"
                 type="password"
                 name='password'
+                autoComplete="current-password"
             />
 
             <button

@@ -49,7 +49,7 @@ export const RegisterForm = () => {
             <label htmlFor="name">Nombre</label>
             <input
                 className={clsx(
-                    "px-5 py-2 border bg-gray-200 rounded mb-5",
+                    "px-5 py-2 border bg-gray-200 text-gray-900 placeholder:text-gray-500 rounded mb-5",
                     {
                         'border-red-500': errors.name?.type === 'required'
                     }
@@ -61,7 +61,7 @@ export const RegisterForm = () => {
             <label htmlFor="email">Correo electrónico</label>
             <input
                 className={clsx(
-                    "px-5 py-2 border bg-gray-200 rounded mb-5",
+                    "px-5 py-2 border bg-gray-200 text-gray-900 placeholder:text-gray-500 rounded mb-5",
                     {
                         'border-red-500': errors.email?.type === 'required'
                     }
@@ -71,7 +71,7 @@ export const RegisterForm = () => {
             <label htmlFor="password">Contraseña</label>
             <input
                 className={clsx(
-                    "px-5 py-2 border bg-gray-200 rounded mb-5",
+                    "px-5 py-2 border bg-gray-200 text-gray-900 placeholder:text-gray-500 rounded mb-5",
                     {
                         'border-red-500': errors.password?.type === 'required'
                     }
