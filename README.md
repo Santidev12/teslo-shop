@@ -2,7 +2,7 @@
 
 E-commerce full-stack construido con **Next.js 15 (App Router)**: catálogo con paginación, carrito persistente, checkout con dirección de envío, pago con **PayPal**, autenticación con roles y un panel de administración para gestionar productos, órdenes y usuarios.
 
-> **Demo:** _añadir aquí la URL de Vercel una vez desplegado_
+> **Demo:**https://teslo-shop-beta-ten.vercel.app/
 > **Credenciales demo:** usuario `melissa@google.com` / `123456` (rol usuario). El admin no es público.
 
 ## Funcionalidades
