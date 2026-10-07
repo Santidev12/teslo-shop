@@ -1,0 +1,91 @@
+'use client'
+import { titleFont } from '@/config/fonts'
+import { useCartStore, useUIStore } from '@/store'
+import Link from 'next/link'
+import React, { useEffect, useState } from 'react'
+import { IoCartOutline } from 'react-icons/io5'
+import { Button } from '../button'
+import { Moon, Sun } from 'lucide-react'
+import { useTheme } from 'next-themes'
+
+export const TopMenu = () => {
+
+    const openSideMenu = useUIStore(state => state.openSideMenu);
+    const totalItemsCart = useCartStore(state => state.getTotalItems());
+    const { setTheme, theme } = useTheme();
+    const [mounted, setMounted] = useState(false)
+
+    const [loaded, setLoaded] = useState(false);
+
+    useEffect(() => {
+        setLoaded(true);
+    }, [])
+
+    const toggleTheme = () => {
+        setTheme(theme === "dark" ? "light" : "dark");
+    };
+
+    useEffect(() => setMounted(true), [])
+
+    if (!mounted) return null
+
+
+    return (
+        <nav className='flex px-5 justify-between items-center w-full'>
+            {/* Logo */}
+            <div>
+                <Link
+                    href={"/"}>
+                    <span className={`${titleFont.className} antialiased font-bold`}>Teslo</span>
+                    <span> | Shop</span>
+                </Link>
+            </div>
+
+            {/* Center Menu */}
+            <div className='hidden sm:block'>
+                <Link className='m-2 p-2 rounded-md transition-all hover:bg-gray-100 dark:hover:bg-stone-900' href={"/gender/men"}>Hombres</Link>
+                <Link className='m-2 p-2 rounded-md transition-all hover:bg-gray-100 dark:hover:bg-stone-900' href={"/gender/women"}>Mujeres</Link>
+                <Link className='m-2 p-2 rounded-md transition-all hover:bg-gray-100 dark:hover:bg-stone-900' href={"/gender/kid"}>Niños</Link>
+            </div>
+
+            {/* search, cart, menu */}
+            <div className='flex items-center'>
+                <Button variant="ghost" onClick={toggleTheme}>
+                    {theme === "dark" ? (
+                        <>
+                            <Sun className="w-4 h-4" />
+                        </>
+                    ) : (
+                        <>
+                            <Moon className="w-4 h-4" />
+                        </>
+                    )}
+                </Button>
+
+                <Link href={
+                    (
+                        totalItemsCart === 0 && loaded
+                            ? "/empty"
+                            : "/cart"
+                    )
+                } className='mx-2'>
+                    <div className='relative'>
+                        <span className='fade-in absolute text-xs rounded-full px-1 font-bold -top-2 -right-2 bg-blue-700 text-white'>
+                            {(loaded && totalItemsCart > 0) && (
+                                totalItemsCart
+                            )}
+                        </span>
+                        <IoCartOutline className='w-5 h-5' />
+                    </div>
+                </Link>
+
+                <button
+                    className='m-2 p-2 rounded-md transition-all hover:bg-gray-100 dark:hover:bg-stone-900 cursor-pointer'
+                    onClick={() => openSideMenu()}
+                >
+                    Menú
+                </button>
+            </div>
+        </nav>
+    )
+}
